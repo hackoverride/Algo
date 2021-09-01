@@ -16,12 +16,12 @@ public class Main {
 			 {0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0},
 			 {0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0},
 			 {0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
-			 {0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0},
-			 {0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0},
-			 {0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0},
-			 {0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0},
-			 {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-			 {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},};
+			 {0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0},
+			 {0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0},
+			 {0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0},
+			 {0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0},
+			 {0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0},
+			 {0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0},};
 	
 	static int startX = 2;
 	static int startY = 10;
@@ -38,7 +38,7 @@ public class Main {
     // the current position is visited!
 		lab[currentY][currentX] = 2;
     
-		// check straight
+		// check up
 			if (lab[currentY - 1][currentX] == 1) {
 				if (labSolver(currentX, currentY -1, lab)) {
 					lab[currentY][currentX] = 3;
@@ -69,10 +69,11 @@ public class Main {
 				}
 			}
     
-    // Add down 
-    if (currentY < lab.length -1) {
-				if (lab[currentY - 1][currentX] == 1) {
-					if (labSolver(currentX, currentY - 1, lab)) {
+			// check down 
+
+			if (currentY < lab.length -1) {
+				if (lab[currentY + 1][currentX] == 1) {
+					if (labSolver(currentX, currentY + 1, lab)) {
 						lab[currentY][currentX] = 3;
 						solution.add("solution: " + currentY + " " + currentX);
 						return true;
@@ -106,5 +107,3 @@ public class Main {
 		 }
 	}
 }
-
-
